@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -13,6 +14,26 @@ import javax.swing.table.DefaultTableModel;
  */
 public class listagemVIEW extends javax.swing.JFrame {
 
+    public void preencherTabela(List<ProdutosDTO> ProdutosDTO) {
+        String colunas[] = {"id", "Nome", "Valor", "Status"};
+        
+        DefaultTableModel model = new DefaultTableModel(colunas, 0);
+        
+        for(ProdutosDTO p: ProdutosDTO){
+            Object[] linha = {
+                p.getId(),
+                p.getNome(),
+                p.getValor(),
+                p.getStatus()
+            };
+            
+            model.addRow(linha);
+                    
+        }
+        
+        listaProdutos.setModel(model);
+    }
+    
     /**
      * Creates new form listagemVIEW
      */
